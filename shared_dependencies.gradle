@@ -17,4 +17,7 @@ dependencies {
 
     // fragment
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
+
+    // leakCanary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
 }
