@@ -8,6 +8,7 @@ import com.submision.mygames.core.data.source.remote.RemoteDataSource
 import com.submision.mygames.core.data.source.remote.network.ApiService
 import com.submision.mygames.core.domain.repository.IGameRepository
 import com.submision.mygames.core.utils.AppExecutors
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -28,10 +29,16 @@ val databaseModule = module {
 
 val networkModule = module {
     single {
+        val hostName = "www.mmobomb.com"
+        val certificatePinner = CertificatePinner.Builder()
+            .add(hostName, "sha256/I8UPily9NpJ+lHDZCUOjXN0nCsrfohuHhDp9Wa6VSjU=")
+            .add(hostName, "sha256/8Rw90Ej3Ttt8RRkrg+WYDS9n7IS03bk5bjP/UXPtaY8=")
+            .build()
         OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
+            .certificatePinner(certificatePinner)
             .build()
     }
     single {
