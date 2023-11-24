@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MyGames</string>
+    <string name="title_favorite">Module Title</string>
+    <string name="something_wrong">Oops.. something went wrong</string>
+    <string name="empty_data">Empty Data</string>
+    <string name="game_title">Game Title</string>
+    <string name="game_genre">Game Genre</string>
+    <string name="description">Description</string>
+    <string name="platform_publisher">%1$s - %2$s</string>
+    <string name="favorite_fab">Favorite FAB</string>
+    <string name="favorite_menu">Favorite Menu</string>
+</resources>

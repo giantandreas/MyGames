@@ -1,0 +1,9 @@
+package com.submision.mygames.favorite.di
+
+import com.submision.mygames.favorite.FavoriteViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.dsl.module
+
+val favoriteModule = module {
+    viewModel { FavoriteViewModel(get()) }
+}
