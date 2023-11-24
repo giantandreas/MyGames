@@ -49,6 +49,9 @@ class FavoriteFragment : Fragment() {
 
         favoriteViewModel.favoriteGames.observe(this){
             gameAdapter.setData(it)
+            if (it.isEmpty()){
+                binding.viewEmpty.root.visibility = View.VISIBLE
+            }
         }
 
         binding.rvGames.layoutManager = LinearLayoutManager(context)

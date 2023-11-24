@@ -2,7 +2,6 @@
     <string name="app_name">MyGames</string>
     <string name="title_favorite">Module Title</string>
     <string name="something_wrong">Oops.. something went wrong</string>
-    <string name="empty_data">Empty Data</string>
     <string name="game_title">Game Title</string>
     <string name="game_genre">Game Genre</string>
     <string name="description">Description</string>

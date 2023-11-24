@@ -1,5 +1,6 @@
 package com.submision.mygames.core.data
 
+import android.util.Log
 import com.submision.mygames.core.data.source.remote.network.ApiResponse
 import kotlinx.coroutines.flow.*
 
@@ -40,6 +41,8 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
     protected abstract fun shouldFetch(data: ResultType?): Boolean
     protected abstract suspend fun createCall(): Flow<ApiResponse<RequestType>>
     protected abstract suspend fun saveCallResult(data: RequestType)
-    protected open fun onFetchFailed() {}
+    protected open fun onFetchFailed() {
+        Log.e("NetworkBound", "onFetchFailed")
+    }
     fun asFlow(): Flow<Resource<ResultType>> = result
 }
