@@ -8,6 +8,8 @@ import com.submision.mygames.core.data.source.remote.RemoteDataSource
 import com.submision.mygames.core.data.source.remote.network.ApiService
 import com.submision.mygames.core.domain.repository.IGameRepository
 import com.submision.mygames.core.utils.AppExecutors
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,10 +22,14 @@ import java.util.concurrent.TimeUnit
 val databaseModule = module {
     factory { get<GameDatabase>().gameDao() }
     single {
+        val passPhrase: ByteArray = SQLiteDatabase.getBytes("submission".toCharArray())
+        val factory = SupportFactory(passPhrase)
         Room.databaseBuilder(
             androidContext(),
             GameDatabase::class.java, "Game.db"
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 

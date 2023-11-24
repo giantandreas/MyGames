@@ -28,6 +28,10 @@ buildscript{
 
     // koin
     ext.koin_version = "3.2.0"
+
+    // database encryption
+    ext.sqlcypher_verstion = "4.4.0"
+    ext.sqlitektx_version = "2.1.0"
 }
 
 plugins {

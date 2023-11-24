@@ -48,6 +48,10 @@ dependencies {
     implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
+    // database encryption
+    implementation "net.zetetic:android-database-sqlcipher:$sqlcypher_verstion"
+    implementation "androidx.sqlite:sqlite-ktx:$sqlitektx_version"
+
 
     // retrofit & interceptor
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
