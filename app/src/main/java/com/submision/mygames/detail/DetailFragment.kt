@@ -1,5 +1,6 @@
 package com.submision.mygames.detail
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -29,10 +30,10 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val game = if (arguments != null){
-            arguments?.getParcelable<Game>(SELECTED_GAME)
+        val game = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
+            arguments?.getParcelable(SELECTED_GAME, Game::class.java)
         } else {
-            null
+            @Suppress("DEPRECATION") arguments?.getParcelable(SELECTED_GAME)
         }
         showDetailGame(game)
     }
